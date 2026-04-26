@@ -61,7 +61,6 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_job.verbose_enqueue_logs = true
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :queue } }
 
   # Append comments with runtime information tags to SQL queries in logs.
   config.active_record.query_log_tags_enabled = true
