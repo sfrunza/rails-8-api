@@ -13,6 +13,7 @@ RequestMover.delete_all
 RequestLog.delete_all
 Request.delete_all
 Session.delete_all
+PaymentMethod.delete_all
 User.delete_all
 CalendarRate.delete_all
 Rate.delete_all
