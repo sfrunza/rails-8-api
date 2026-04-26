@@ -14,7 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { EntranceType } from "@/domains/entrance-types/entrance-type.types";
+import type { EntranceType } from "@/types/index";
 import type { FieldError as RHFFieldError } from "react-hook-form";
 
 type CrewSizeFieldProps = {
@@ -40,18 +40,22 @@ export function CrewSizeField({
             and destination entrance types.
           </FieldDescription>
         </FieldContent>
-        <div className="text-muted-foreground py-4 text-sm">
+        <div className="py-4 text-sm text-muted-foreground">
           No entrance types available. Please add entrance types first.
         </div>
       </Field>
     );
   }
 
-  const handleCellChange = (rowIdx: number, colIdx: number, cellValue: number | null) => {
+  const handleCellChange = (
+    rowIdx: number,
+    colIdx: number,
+    cellValue: number | null
+  ) => {
     const newSettings = value
       ? value.map((row) => [...row])
       : Array.from({ length: entranceTypes.length }, () =>
-          Array(entranceTypes.length).fill(2),
+          Array(entranceTypes.length).fill(2)
         );
 
     if (!newSettings[rowIdx]) {
@@ -75,7 +79,7 @@ export function CrewSizeField({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="bg-background sticky left-0 z-10 min-w-[120px]">
+              <TableHead className="sticky left-0 z-10 min-w-[120px] bg-background">
                 Origin → Destination
               </TableHead>
               {entranceTypes.map((type) => (
@@ -90,7 +94,7 @@ export function CrewSizeField({
               const row = value?.[rowIdx] ?? [];
               return (
                 <TableRow key={originType.id}>
-                  <TableCell className="bg-background sticky left-0 z-10 font-medium">
+                  <TableCell className="sticky left-0 z-10 bg-background font-medium">
                     {originType.name}
                   </TableCell>
                   {entranceTypes.map((destType, colIdx) => (

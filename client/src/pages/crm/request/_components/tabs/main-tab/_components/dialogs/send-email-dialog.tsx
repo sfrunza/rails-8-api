@@ -42,9 +42,12 @@ import {
 } from "react";
 import { useSearchParams } from "react-router";
 import { toast } from "sonner";
-import type { EmailTemplate, Folder } from "@/types";
+import type { EmailTemplate, Folder } from "@/types/index";
 import { useFolders } from "@/hooks/api/use-folders";
-import { useEmailTemplates, useSendEmails } from "@/hooks/api/use-email-templates";
+import {
+  useEmailTemplates,
+  useSendEmails,
+} from "@/hooks/api/use-email-templates";
 
 export function SendEmailDialog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,7 +56,7 @@ export function SendEmailDialog() {
   const [emails, setEmails] = useState<string[]>([]);
   const [emailInput, setEmailInput] = useState("");
   const [selectedTemplates, setSelectedTemplates] = useState<EmailTemplate[]>(
-    [],
+    []
   );
 
   const { request } = useRequest();
@@ -155,7 +158,7 @@ export function SendEmailDialog() {
 
   const isTemplateSelected = useCallback(
     (templateId: number) => selectedTemplates.some((t) => t.id === templateId),
-    [selectedTemplates],
+    [selectedTemplates]
   );
 
   function handleSend() {
@@ -181,10 +184,10 @@ export function SendEmailDialog() {
 
         {/* Email addresses input */}
         <div className="border-b px-6 pb-4">
-          <label className="text-muted-foreground mb-1.5 block text-sm font-medium">
+          <label className="mb-1.5 block text-sm font-medium text-muted-foreground">
             Recipients
           </label>
-          <div className="border-input focus-within:border-ring focus-within:ring-ring/50 flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border px-2.5 py-1.5 focus-within:ring-[3px]">
+          <div className="flex min-h-9 flex-wrap items-center gap-1.5 rounded-md border border-input px-2.5 py-1.5 focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50">
             {emails.map((email) => (
               <Badge
                 key={email}
@@ -195,7 +198,7 @@ export function SendEmailDialog() {
                 <button
                   type="button"
                   onClick={() => removeEmail(email)}
-                  className="hover:text-foreground text-muted-foreground rounded-full"
+                  className="rounded-full text-muted-foreground hover:text-foreground"
                 >
                   <XIcon className="size-3" />
                 </button>
@@ -253,7 +256,7 @@ export function SendEmailDialog() {
           <div className="grid h-full grid-cols-5">
             {/* Left: Folder browser */}
             <div className="col-span-2 min-h-0 border-r">
-              <div className="text-muted-foreground flex items-center gap-2 border-b px-4 py-2 text-xs font-medium tracking-wide uppercase">
+              <div className="flex items-center gap-2 border-b px-4 py-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
                 <FolderIcon className="size-3.5" />
                 Templates
               </div>
@@ -271,7 +274,7 @@ export function SendEmailDialog() {
                       />
                     ))}
                   {(!folders || templatesByFolder.size === 0) && (
-                    <p className="text-muted-foreground px-2 py-8 text-center text-sm">
+                    <p className="px-2 py-8 text-center text-sm text-muted-foreground">
                       No templates available.
                     </p>
                   )}
@@ -282,7 +285,7 @@ export function SendEmailDialog() {
 
             {/* Right: Selected templates */}
             <div className="col-span-3 min-h-0">
-              <div className="text-muted-foreground flex items-center gap-2 border-b px-4 py-2 text-xs font-medium tracking-wide uppercase">
+              <div className="flex items-center gap-2 border-b px-4 py-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
                 <MailIcon className="size-3.5" />
                 Selected ({selectedTemplates.length})
               </div>
@@ -306,10 +309,10 @@ export function SendEmailDialog() {
                         className="group flex items-center justify-between px-4 py-2.5"
                       >
                         <div className="min-w-0 flex-1">
-                          <p className="text-foreground truncate text-sm font-medium">
+                          <p className="truncate text-sm font-medium text-foreground">
                             {template.name}
                           </p>
-                          <p className="text-muted-foreground truncate text-xs">
+                          <p className="truncate text-xs text-muted-foreground">
                             {template.subject}
                           </p>
                         </div>
@@ -318,7 +321,7 @@ export function SendEmailDialog() {
                           variant="ghost"
                           size="icon-xs"
                           onClick={() => removeTemplate(template.id)}
-                          className="text-muted-foreground hover:text-destructive ml-2 shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
+                          className="ml-2 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 hover:text-destructive"
                         >
                           <XIcon />
                         </Button>
@@ -363,11 +366,11 @@ function FolderSection({
 }) {
   return (
     <Collapsible>
-      <CollapsibleTrigger className="hover:bg-muted group flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium">
-        <ChevronRightIcon className="text-muted-foreground size-4 transition-transform group-data-[state=open]:rotate-90" />
+      <CollapsibleTrigger className="group flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-muted">
+        <ChevronRightIcon className="size-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-90" />
         {/* <FolderIcon className="text-muted-foreground size-4" /> */}
-        <FolderIcon className="text-muted-foreground size-4 shrink-0 [[data-state=open]>&]:hidden" />
-        <FolderOpenIcon className="text-muted-foreground size-4 shrink-0 [[data-state=closed]>&]:hidden" />
+        <FolderIcon className="size-4 shrink-0 text-muted-foreground [[data-state=open]>&]:hidden" />
+        <FolderOpenIcon className="size-4 shrink-0 text-muted-foreground [[data-state=closed]>&]:hidden" />
         <span className="flex-1 truncate text-left">{folder.name}</span>
         <Badge variant="secondary" className="text-[10px]">
           {templates.length}
@@ -383,8 +386,8 @@ function FolderSection({
                 type="button"
                 onClick={() => onToggleTemplate(template)}
                 className={cn(
-                  "hover:bg-muted flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors",
-                  selected && "bg-primary/10 text-primary",
+                  "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors hover:bg-muted",
+                  selected && "bg-primary/10 text-primary"
                 )}
               >
                 <FileTextIcon className="size-3.5 shrink-0" />

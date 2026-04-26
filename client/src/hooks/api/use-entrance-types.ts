@@ -2,7 +2,7 @@ import { createEntranceType, deleteEntranceType, getEntranceTypes, updateEntranc
 import { STALE_TIME_CATALOG } from "@/lib/constants";
 import { queryClient } from "@/lib/query-client";
 import { queryKeys } from "@/lib/query-keys";
-import type { EntranceType } from "@/types";
+import type { EntranceType } from '@/types/index';
 import { useMutation, useQuery, type UseMutationOptions, type UseQueryOptions } from "@tanstack/react-query";
 
 export function useEntranceTypes(

@@ -1,0 +1,1 @@
+import"./rolldown-runtime-S-ySWqyJ.js";import{Pn as e,Rn as t}from"./vendor-misc-Bh0ZUXav.js";import{Mr as n}from"./index-DFhfzAJ8.js";t();var r=e();function i({onChange:e,value:t,...i}){return(0,r.jsx)(n,{...i,onChange:t=>{let n=t.target.valueAsNumber;e(isNaN(n)?null:n)},value:t??``,type:`number`})}export{i as t};

@@ -1,4 +1,4 @@
-import type { UsersFilter } from "@/types";
+import type { UsersFilter } from '@/types/index';
 
 export const queryKeys = {
   users: {

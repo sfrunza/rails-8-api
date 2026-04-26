@@ -1,4 +1,4 @@
-import type { RequestStatus, PaymentStatus, InvoiceStatus, UserRole } from '@/types';
+import type { RequestStatus, PaymentStatus, InvoiceStatus, UserRole } from '@/types/index';
 
 export const REQUEST_STATUSES: RequestStatus[] = [
   "pending",

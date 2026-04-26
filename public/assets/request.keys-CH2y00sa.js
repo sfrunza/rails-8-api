@@ -1,0 +1,1 @@
+var e={all:[`requests`],lists:()=>[...e.all,`list`],list:t=>[...e.lists(),t],details:()=>[...e.all,`detail`],detail:t=>[...e.details(),t],statusCounts:()=>[...e.all,`statusCounts`],bookingStats:()=>[...e.all,`bookingStats`]};export{e as t};

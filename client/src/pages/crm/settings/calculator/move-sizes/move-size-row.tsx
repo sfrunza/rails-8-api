@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "react-router";
-import type { MoveSize } from "@/types";
+import type { MoveSize } from "@/types/index";
 
 export function MoveSizeRow({ id, item }: { id: number; item: MoveSize }) {
   const {
@@ -60,12 +60,12 @@ export function MoveSizeRow({ id, item }: { id: number; item: MoveSize }) {
             className="h-10 w-10 rounded object-cover"
           />
         ) : (
-          <div className="bg-muted flex h-10 w-10 items-center justify-center rounded">
+          <div className="flex h-10 w-10 items-center justify-center rounded bg-muted">
             <ImageIcon className="text-muted-foreground" />
           </div>
         )}
       </TableCell>
-      <TableCell className="text-foreground font-medium">{item.name}</TableCell>
+      <TableCell className="font-medium text-foreground">{item.name}</TableCell>
       <TableCell>
         <span className="flex items-center gap-2">
           <TruckIcon className="size-4" />

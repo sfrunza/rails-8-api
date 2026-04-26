@@ -1,4 +1,4 @@
-import type { EmailTemplate } from '@/domains/email-templates/email-template.types'
+import type { EmailTemplate } from '@/types/index'
 import { create } from 'zustand'
 
 

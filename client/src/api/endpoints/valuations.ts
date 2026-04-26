@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { Valuation } from '@/types';
+import type { Valuation } from '@/types/index';
 
 const ENDPOINT = '/valuations';
 

@@ -28,12 +28,50 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+      "@/api/*": [
+        "./src/api/*"
+      ],
+      "@/assets/*": [
+        "./src/assets/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/constants/*": [
+        "./src/constants/*"
+      ],
+      "@/domains/*": [
+        "./src/domains/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/icons/*": [
+        "./src/icons/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/layouts/*": [
+        "./src/layouts/*"
+      ],
+      "@/pages/*": [
+        "./src/pages/*"
+      ],
+      "@/providers/*": [
+        "./src/providers/*"
+      ],
+      "@/routes/*": [
+        "./src/routes/*"
+      ],
+      "@/stores/*": [
+        "./src/stores/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+    }
   },
   "include": [
     "src"

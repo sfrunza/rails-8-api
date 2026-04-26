@@ -4,7 +4,7 @@ import type {
   Request,
   Status,
 } from "@/domains/requests/request.types";
-import type { Truck } from "@/domains/trucks/truck.types";
+import type { Truck } from "@/types/index";
 import { cn } from "@/lib/utils";
 import { Fragment } from "react";
 import { ParklotJobInfoLarge } from "./parklot-job-info-large";
@@ -87,17 +87,17 @@ export function ParklotJobs({
           {(slots?.[truck.id] ?? []).map((slot) => {
             const left = minutesToGridPosition(slot.start_minutes);
             const width = durationToWidth(
-              slot.end_minutes - slot.start_minutes,
+              slot.end_minutes - slot.start_minutes
             );
             const isActive = selectedRequestId === slot.request.id;
             const bgColor = SCHEDULE_BG_COLOR;
 
             const statusDurationMinutes = getRequestDurationMinutes(
-              slot.request,
+              slot.request
             );
             const jobWidth = Math.min(
               durationToWidth(statusDurationMinutes),
-              100,
+              100
             );
 
             console.log("slot", slot);

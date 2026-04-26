@@ -1,50 +1,50 @@
-import { PageAction, PageHeader, PageTitle } from "@/components/page-component"
-import { Button } from "@/components/ui/button"
-import { Spinner } from "@/components/ui/spinner"
+import { PageAction, PageHeader, PageTitle } from "@/components/page-component";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import {
   usePackingTypes,
   useUpdatePackingType,
-} from "@/hooks/api/use-packing-types"
-import type { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core"
-import { arrayMove } from "@dnd-kit/sortable"
-import { PlusIcon } from "@/components/icons"
-import { useEffect, useMemo, useState } from "react"
-import { useSearchParams } from "react-router"
-import { DeletePackingTypeDialog } from "./delete-packing-type-dialog"
-import { PackingTypeFormSheet } from "./packing-type-form-sheet"
-import { PackingTypesTable } from "./packing-type-table"
-import type { PackingType } from "@/types"
+} from "@/hooks/api/use-packing-types";
+import type { DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
+import { arrayMove } from "@dnd-kit/sortable";
+import { PlusIcon } from "@/components/icons";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router";
+import { DeletePackingTypeDialog } from "./delete-packing-type-dialog";
+import { PackingTypeFormSheet } from "./packing-type-form-sheet";
+import { PackingTypesTable } from "./packing-type-table";
+import type { PackingType } from "@/types/index";
 
 export function PackingTypes() {
-  const [_, setSearchParams] = useSearchParams()
-  const { data: packingTypes, isLoading, error } = usePackingTypes()
-  const [items, setItems] = useState<PackingType[]>(packingTypes ?? [])
+  const [_, setSearchParams] = useSearchParams();
+  const { data: packingTypes, isLoading, error } = usePackingTypes();
+  const [items, setItems] = useState<PackingType[]>(packingTypes ?? []);
 
   useEffect(() => {
-    setItems(packingTypes ?? [])
-  }, [packingTypes])
+    setItems(packingTypes ?? []);
+  }, [packingTypes]);
 
   const { mutate: updatePackingTypeMutation } = useUpdatePackingType({
     onError: () => {
-      setItems(packingTypes ?? [])
+      setItems(packingTypes ?? []);
     },
-  })
+  });
 
   const dataIds = useMemo<UniqueIdentifier[]>(
     () => items?.map(({ id }) => id) || [],
     [items]
-  )
+  );
 
   function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event
+    const { active, over } = event;
     if (active && over && active.id !== over.id) {
       setItems((data) => {
-        const oldIndex = dataIds.indexOf(active.id)
-        const newIndex = dataIds.indexOf(over.id)
-        return arrayMove(data, oldIndex, newIndex)
-      })
+        const oldIndex = dataIds.indexOf(active.id);
+        const newIndex = dataIds.indexOf(over.id);
+        return arrayMove(data, oldIndex, newIndex);
+      });
 
-      const activeItem = items.find((item) => item.id === active.id)
+      const activeItem = items.find((item) => item.id === active.id);
 
       if (activeItem) {
         updatePackingTypeMutation({
@@ -52,7 +52,7 @@ export function PackingTypes() {
           data: {
             position: dataIds.indexOf(over.id),
           },
-        })
+        });
       }
     }
   }
@@ -69,7 +69,7 @@ export function PackingTypes() {
           <Button
             size="sm"
             onClick={() => {
-              setSearchParams({ create_packing_service: "true" })
+              setSearchParams({ create_packing_service: "true" });
             }}
           >
             <PlusIcon />
@@ -97,5 +97,5 @@ export function PackingTypes() {
         <PackingTypesTable packingTypes={items} handleDragEnd={handleDragEnd} />
       )}
     </div>
-  )
+  );
 }

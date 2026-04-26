@@ -12,7 +12,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { useSearchParams } from "react-router";
-import type { ExtraService } from "@/types";
+import type { ExtraService } from "@/types/index";
 
 export function ExtraServiceRow({
   id,
@@ -53,7 +53,7 @@ export function ExtraServiceRow({
           <GripVerticalIcon className="text-muted-foreground" />
         </Button>
       </TableCell>
-      <TableCell className="text-foreground font-medium">{item.name}</TableCell>
+      <TableCell className="font-medium text-foreground">{item.name}</TableCell>
       <TableCell>${(item.price / 100).toFixed(2)}</TableCell>
       <TableCell>
         <Switch checked={item.active} />
@@ -73,7 +73,7 @@ function Actions({ extraService }: { extraService: ExtraService }) {
         <Button
           variant="outline"
           size="icon"
-          className="data-[state=open]:bg-muted h-7"
+          className="h-7 data-[state=open]:bg-muted"
         >
           <span className="sr-only">Open menu</span>
           <MoreHorizontalIcon />

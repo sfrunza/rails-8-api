@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { EntranceType } from '@/types';
+import type { EntranceType } from '@/types/index';
 
 const ENDPOINT = '/entrance_types';
 

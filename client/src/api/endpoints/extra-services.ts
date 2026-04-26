@@ -1,4 +1,4 @@
-import type { ExtraService } from '@/types';
+import type { ExtraService } from '@/types/index';
 import { api } from '@/lib/axios';
 
 const ENDPOINT = '/extra_services';

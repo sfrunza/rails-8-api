@@ -1,15 +1,15 @@
-import { CalendarWithRates } from '@/components/calendar-with-rates';
-import { PencilLineIcon } from '@/components/icons';
-import { Button } from '@/components/ui/button';
+import { CalendarWithRates } from "@/components/calendar-with-rates";
+import { PencilLineIcon } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { Spinner } from '@/components/ui/spinner';
-import type { CalendarRateMap, Rate } from '@/domains/rates/rate.types';
-import { parseDateOnly } from '@/lib/format-date';
-import { useMemo, useState } from 'react';
+} from "@/components/ui/popover";
+import { Spinner } from "@/components/ui/spinner";
+import type { CalendarRateMap, Rate } from "@/types/index";
+import { parseDateOnly } from "@/lib/format-date";
+import { useMemo, useState } from "react";
 
 interface EditDateProps {
   rates: Rate[] | undefined;
@@ -49,7 +49,7 @@ export function EditDate({
           Edit date
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0 relative" align="start">
+      <PopoverContent className="relative w-auto p-0" align="start">
         <CalendarWithRates
           rates={rates}
           calendarRates={calendarRates}
@@ -67,7 +67,7 @@ export function EditDate({
           }}
           modifiersClassNames={{
             disabled:
-              '[&>button]:line-through opacity-50 hover:cursor-not-allowed',
+              "[&>button]:line-through opacity-50 hover:cursor-not-allowed",
           }}
           defaultMonth={selected}
           showOutsideDays={false}

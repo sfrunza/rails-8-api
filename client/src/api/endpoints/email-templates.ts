@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { EmailTemplate, SendEmailsPayload } from '@/types';
+import type { EmailTemplate, SendEmailsPayload } from '@/types/index';
 
 const ENDPOINT = '/email_templates';
 

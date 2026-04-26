@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { MoveSize } from '@/types';
+import type { MoveSize } from '@/types/index';
 
 const ENDPOINT = '/move_sizes';
 

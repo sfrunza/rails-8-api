@@ -2,7 +2,7 @@ import { createTruck, getTrucks, updateTruck } from "@/api/endpoints/trucks";
 import { STALE_TIME_CATALOG } from "@/lib/constants";
 import { queryClient } from "@/lib/query-client";
 import { queryKeys } from "@/lib/query-keys";
-import type { Truck } from "@/types";
+import type { Truck } from '@/types/index';
 import { useMutation, useQuery, type UseMutationOptions, type UseQueryOptions } from "@tanstack/react-query";
 
 export function useTrucks(

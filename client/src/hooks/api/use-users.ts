@@ -1,7 +1,7 @@
 import { getUserById, getUsers, updateUser } from "@/api/endpoints/users";
 import { queryClient } from "@/lib/query-client";
 import { queryKeys } from "@/lib/query-keys";
-import type { User } from "@/types";
+import type { User } from '@/types/index';
 import { useMutation, useQuery, type UseMutationOptions, type UseQueryOptions } from "@tanstack/react-query";
 
 export function useUsers(options?: Omit<

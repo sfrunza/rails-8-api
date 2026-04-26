@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { CalendarRate, CalendarRateMap } from '@/types';
+import type { CalendarRate, CalendarRateMap } from '@/types/index';
 
 const ENDPOINT = '/calendar_rates';
 

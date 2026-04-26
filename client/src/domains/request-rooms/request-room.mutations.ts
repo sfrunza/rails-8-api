@@ -19,7 +19,7 @@ export function useCreateRequestRoom(
   return useMutation({
     mutationFn: ({ requestId, data }) => createRequestRoom(requestId, data),
     ...rest,
-    onSuccess: (data, variables, context) => {
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: requestKeys.detail(variables.requestId) });
       // onSuccess?.(data, variables, context);
     },

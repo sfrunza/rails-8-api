@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { Folder } from '@/types';
+import type { Folder } from '@/types/index';
 
 const ENDPOINT = '/folders';
 

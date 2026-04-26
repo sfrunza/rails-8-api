@@ -3,7 +3,7 @@ import { extractError } from "@/lib/axios";
 import { STALE_TIME_CATALOG } from "@/lib/constants";
 import { queryClient } from "@/lib/query-client";
 import { queryKeys } from "@/lib/query-keys";
-import type { Folder } from "@/types";
+import type { Folder } from '@/types/index';
 import { useMutation, useQuery, type UseMutationOptions, type UseQueryOptions } from "@tanstack/react-query";
 import { toast } from "sonner";
 

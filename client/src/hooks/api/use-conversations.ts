@@ -1,6 +1,6 @@
 import { getConversations } from "@/api/endpoints/conversations";
 import { queryKeys } from "@/lib/query-keys";
-import type { ConversationsResponse } from "@/types";
+import type { ConversationsResponse } from '@/types/index';
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export function useGetConversations(perPage = 10) {

@@ -127,7 +127,7 @@ export function AddressEditDialog() {
           }
         },
       },
-      { forceCalculate: true },
+      { forceCalculate: true }
     );
 
   useEffect(() => {
@@ -149,7 +149,7 @@ export function AddressEditDialog() {
   function onSubmit(values: FormValues) {
     if (!request) return;
 
-    const updatedAddress: Address = {
+    const updatedAddress: Omit<Address, "location"> = {
       ...currentAddress,
       ...values,
     };
@@ -192,7 +192,7 @@ export function AddressEditDialog() {
         });
       });
     },
-    [form],
+    [form]
   );
 
   return (

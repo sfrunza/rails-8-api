@@ -140,7 +140,7 @@ export function AddressAutocompleteInput({
             },
           };
 
-          addresses.push(addressObj);
+          addresses.push(addressObj as Partial<Address>);
         }
 
         if (!cancelled) {
@@ -191,7 +191,7 @@ export function AddressAutocompleteInput({
           {...props}
         />
         {isLoading && (
-          <div className="text-muted-foreground pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-3 peer-disabled:opacity-50">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-3 text-muted-foreground peer-disabled:opacity-50">
             <Spinner className="size-4" />
             <span className="sr-only">Loading suggestions...</span>
           </div>
@@ -213,7 +213,7 @@ export function AddressAutocompleteInput({
                 className="z-9999! items-start gap-1 truncate text-xs"
               >
                 {/* Location icon */}
-                <div className="text-muted-foreground mt-0.5">
+                <div className="mt-0.5 text-muted-foreground">
                   <svg
                     width="14"
                     height="14"
@@ -227,7 +227,7 @@ export function AddressAutocompleteInput({
                 {/* Address text */}
                 <div className="min-w-0">
                   <div className="truncate text-sm font-medium">{street}</div>
-                  <div className="text-muted-foreground truncate text-xs">
+                  <div className="truncate text-xs text-muted-foreground">
                     {city}, {state} {zip}
                   </div>
                 </div>

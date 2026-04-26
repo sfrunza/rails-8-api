@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import { MessageCircleMoreIcon } from "@/components/icons";
 import { useCallback, useRef, useState } from "react";
 import { useGetUnreadCount } from "@/hooks/api/use-messages";
-import type { CableMessageEvent } from "@/types";
+import type { CableMessageEvent } from "@/types/index";
 
 export function MessagesDialog({
   requestId,

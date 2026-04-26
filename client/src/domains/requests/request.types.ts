@@ -1,5 +1,5 @@
 import type { RequestRoom } from "@/domains/request-rooms/request-room.types";
-import type { Location, MoveSize, PackingType, Service, Truck } from "@/types";
+import type { Location, MoveSize, PackingType, Service, Truck } from '@/types/index';
 import type { SessionUser } from "@/types/user";
 import type { DateFilter, SortField, SortOrder, StatusFilter } from "@/stores/use-table-requests-store";
 

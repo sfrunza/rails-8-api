@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "../ui/skeleton";
-import type { CalendarRateMap, Rate } from "@/domains/rates/rate.types";
+import type { CalendarRateMap, Rate } from "@/types/index";
 import { hexToRgb } from "@/lib/helpers";
 import { formatDate } from "@/lib/format-date";
 
@@ -35,7 +35,7 @@ const BASE_DAY_STYLES: CSSProperties = {
  */
 function getDayStyles(
   isBlocked: boolean,
-  rateColor: string | undefined,
+  rateColor: string | undefined
 ): CSSProperties {
   if (isBlocked) {
     return {
@@ -78,7 +78,7 @@ export const CalendarWithRates = memo(function ({
       const rateId = id ?? defaultRate?.id ?? null;
       return ratesMap.get(rateId);
     },
-    [ratesMap, rates],
+    [ratesMap, rates]
   );
 
   const getDayInfo = useCallback(
@@ -88,7 +88,7 @@ export const CalendarWithRates = memo(function ({
       // console.log("formatDate", formatDate(date, "yyyy-MM-dd"));
       return calendarRates[formatDate(date, "yyyy-MM-dd")] ?? null;
     },
-    [calendarRates],
+    [calendarRates]
   );
 
   return (

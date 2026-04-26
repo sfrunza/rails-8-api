@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios'
-import type { LoginResponse } from '@/types';
+import type { LoginResponse } from '@/types/index';
 
 export async function login(email_address: string, password: string): Promise<LoginResponse> {
   const res = await api.post<LoginResponse>('/session', { email_address, password })

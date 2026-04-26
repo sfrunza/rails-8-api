@@ -1,13 +1,17 @@
-import { PageContent, PageHeader, PageTitle } from "@/components/page-component"
-import { Button } from "@/components/ui/button"
+import {
+  PageContent,
+  PageHeader,
+  PageTitle,
+} from "@/components/page-component";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Spinner } from "@/components/ui/spinner"
-import { Switch } from "@/components/ui/switch"
+} from "@/components/ui/dropdown-menu";
+import { Spinner } from "@/components/ui/spinner";
+import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -15,17 +19,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { hexToRgb } from "@/lib/helpers"
-import { MoreHorizontalIcon } from "@/components/icons"
-import { Fragment } from "react"
-import { useSearchParams } from "react-router"
-import { RateFormSheet } from "./rate-form-sheet"
-import { useRates } from "@/hooks/api/use-rates"
-import type { Rate } from "@/types"
+} from "@/components/ui/table";
+import { hexToRgb } from "@/lib/helpers";
+import { MoreHorizontalIcon } from "@/components/icons";
+import { Fragment } from "react";
+import { useSearchParams } from "react-router";
+import { RateFormSheet } from "./rate-form-sheet";
+import { useRates } from "@/hooks/api/use-rates";
+import type { Rate } from "@/types/index";
 
 function RatesPage() {
-  const { data: rates, isLoading, error } = useRates()
+  const { data: rates, isLoading, error } = useRates();
 
   return (
     <Fragment>
@@ -86,10 +90,10 @@ function RatesPage() {
                 {Object.keys(rate.movers_rates)
                   .slice(0, 3)
                   .map((mover, i) => {
-                    const hRate = rate.movers_rates[mover].hourly_rate
+                    const hRate = rate.movers_rates[mover].hourly_rate;
                     return (
                       <TableCell key={i}>${(hRate / 100).toFixed(2)}</TableCell>
-                    )
+                    );
                   })}
 
                 <TableCell>
@@ -111,13 +115,13 @@ function RatesPage() {
         </Table>
       </PageContent>
     </Fragment>
-  )
+  );
 }
 
-export const Component = RatesPage
+export const Component = RatesPage;
 
 function Actions({ rate }: { rate: Rate }) {
-  const [_, setSearchParams] = useSearchParams()
+  const [_, setSearchParams] = useSearchParams();
   return (
     <>
       <DropdownMenu>
@@ -132,7 +136,7 @@ function Actions({ rate }: { rate: Rate }) {
             onClick={() => {
               setSearchParams({
                 edit: rate.id.toString(),
-              })
+              });
             }}
           >
             Edit rate
@@ -140,5 +144,5 @@ function Actions({ rate }: { rate: Rate }) {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
+  );
 }

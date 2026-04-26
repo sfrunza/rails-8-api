@@ -27,7 +27,7 @@ export function useCreateRequestItem(
     mutationFn: ({ requestId, requestRoomId, data }) =>
       createRequestItem(requestId, requestRoomId, data),
     ...rest,
-    onSuccess: (data, variables, context) => {
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: requestKeys.detail(variables.requestId) });
       // onSuccess?.(data, variables, context);
     },
@@ -54,7 +54,7 @@ export function useUpdateRequestItem(
     mutationFn: ({ requestId, requestRoomId, id, data }) =>
       updateRequestItem(requestId, requestRoomId, id, data),
     ...rest,
-    onSuccess: (data, variables, context) => {
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: requestKeys.detail(variables.requestId) });
       // onSuccess?.(data, variables, context);
     },
@@ -76,7 +76,7 @@ export function useDeleteRequestItem(
     mutationFn: ({ requestId, requestRoomId, id }) =>
       deleteRequestItem(requestId, requestRoomId, id),
     ...rest,
-    onSuccess: (data, variables, context) => {
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: requestKeys.detail(variables.requestId) });
       // onSuccess?.(data, variables, context);
     },

@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { Service } from '@/types';
+import type { Service } from '@/types/index';
 
 const ENDPOINT = '/services';
 

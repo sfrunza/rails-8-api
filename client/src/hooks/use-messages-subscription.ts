@@ -1,6 +1,6 @@
 
 import { CableContext } from "@/providers/action-cable-provider"
-import type { CableMessageEvent } from "@/types"
+import type { CableMessageEvent } from '@/types/index'
 import { useContext, useEffect, useRef } from "react"
 
 interface UseMessagesSubscriptionProps {

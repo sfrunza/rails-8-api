@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { ConversationsResponse } from '@/types';
+import type { ConversationsResponse } from '@/types/index';
 
 const ENDPOINT = '/conversations';
 

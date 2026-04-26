@@ -5,7 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { formatDate, parseDateOnly } from "@/lib/format-date";
-import type { CalendarRateMap, Rate } from "@/domains/rates/rate.types";
+import type { CalendarRateMap, Rate } from "@/types/index";
 import { ChevronDownIcon } from "@/components/icons";
 import { useMemo, useState } from "react";
 import { CalendarWithRates } from "@/components/calendar-with-rates";
@@ -33,7 +33,7 @@ export function DatePickerWithRates({
       .map((rate) =>
         rate.is_blocked
           ? (parseDateOnly(rate.formatted_date) ?? new Date())
-          : null,
+          : null
       )
       .filter((date) => date !== null);
   }, [calendarRates]);

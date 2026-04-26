@@ -10,7 +10,7 @@ import {
   ORIGIN_MARKER_SVG,
   WAYPOINT_MARKER_SVG,
 } from "./map-config";
-import type { Location } from "@/types";
+import type { Location } from "@/types/index";
 
 type LatLngLiteral = {
   latitude: number;

@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
     @template = template
     token = @user.generate_magic_link!(expires_in: 2.days)
 
-    @url = "http://localhost:3000/auth/auto-login?token=#{token}&return_to=/account/requests/#{request.id}"
+    @url = "#{ENV.fetch("FRONTEND_URL")}/auth/auto-login?token=#{token}&return_to=/account/requests/#{request.id}"
 
     @variables = {
       first_name: user.first_name,

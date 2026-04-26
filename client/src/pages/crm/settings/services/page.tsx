@@ -16,7 +16,7 @@ import { DeleteServiceDialog } from "./delete-service-dialog";
 import { ServiceFormSheet } from "./service-form-sheet";
 import { ServicesTable } from "./services-table";
 import { useServices, useUpdateService } from "@/hooks/api/use-services";
-import type { Service } from "@/types";
+import type { Service } from "@/types/index";
 
 function ServicesPage() {
   const [_, setSearchParams] = useSearchParams();
@@ -40,7 +40,7 @@ function ServicesPage() {
 
   const dataIds = useMemo<UniqueIdentifier[]>(
     () => items?.map(({ id }) => id) || [],
-    [items],
+    [items]
   );
 
   function handleDragEnd(event: DragEndEvent) {

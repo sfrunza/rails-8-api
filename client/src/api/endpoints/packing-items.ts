@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { PackingItem } from '@/types';
+import type { PackingItem } from '@/types/index';
 
 const ENDPOINT = '/packing_items';
 

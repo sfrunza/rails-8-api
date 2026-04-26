@@ -14,7 +14,7 @@ import { useGetConversations } from "@/hooks/api/use-conversations";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 import { formatDate } from "@/lib/format-date";
 import { cn } from "@/lib/utils";
-import type { Conversation } from "@/types";
+import type { Conversation } from "@/types/index";
 import { useNavigate, useParams } from "react-router";
 
 const OBSERVER_OPTIONS: IntersectionObserverInit = { rootMargin: "100px" };

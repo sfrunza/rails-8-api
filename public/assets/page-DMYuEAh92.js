@@ -1,0 +1,1 @@
+import{Pn as e}from"./vendor-misc-Bh0ZUXav.js";import{N as t}from"./vendor-react-CEK8xwlG.js";import{qr as n}from"./index-DFhfzAJ8.js";var r=e();function i(){return(0,r.jsxs)(n,{children:[(0,r.jsx)(`div`,{className:`px-4 pt-4 pb-2.5`,children:(0,r.jsx)(`h1`,{className:`text-2xl font-bold`,children:`Payments`})}),(0,r.jsx)(t,{})]})}var a=i;export{a as Component};

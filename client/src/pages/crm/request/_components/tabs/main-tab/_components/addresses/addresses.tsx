@@ -30,6 +30,31 @@ const getAddressString = (address: Address): string => {
   return `${address?.street}, ${address?.city}, ${address?.state} ${address?.zip}`
 }
 
+/** Form values use optional lat/lng; Address expects a full Location when present. */
+type AddressFormPatch = {
+  street?: string
+  city?: string
+  state?: string
+  zip?: string
+  apt?: string
+  floor_id?: number | null
+  location?: { lat?: number; lng?: number }
+}
+
+function mergeAddressFromForm(base: Address, patch: AddressFormPatch): Address {
+  return {
+    ...base,
+    ...patch,
+    location:
+      patch.location !== undefined
+        ? {
+            lat: patch.location.lat ?? base.location?.lat ?? 0,
+            lng: patch.location.lng ?? base.location?.lng ?? 0,
+          }
+        : base.location,
+  }
+}
+
 export function Addresses() {
   const { data: settings } = useSettings()
   const { request, draft, setField, isDirty } = useRequest()
@@ -125,10 +150,7 @@ export function Addresses() {
               data={draft?.origin}
               onAddressChange={(values) => {
                 if (!draft?.origin) return
-                setField("origin", {
-                  ...draft?.origin,
-                  ...values,
-                })
+                setField("origin", mergeAddressFromForm(draft.origin, values))
               }}
             />
           )}
@@ -174,10 +196,10 @@ export function Addresses() {
               data={draft?.destination}
               onAddressChange={(values) => {
                 if (!draft?.destination) return
-                setField("destination", {
-                  ...draft?.destination,
-                  ...values,
-                })
+                setField(
+                  "destination",
+                  mergeAddressFromForm(draft.destination, values)
+                )
               }}
             />
           )}
@@ -237,12 +259,7 @@ export function Addresses() {
                 setField(
                   "stops",
                   draft?.stops?.map((stop, j) =>
-                    j === i
-                      ? {
-                          ...stop,
-                          ...values,
-                        }
-                      : stop
+                    j === i ? mergeAddressFromForm(stop, values) : stop
                   )
                 )
               }}

@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios';
-import type { User } from '@/types';
+import type { User } from '@/types/index';
 
 const ENDPOINT = '/users';
 

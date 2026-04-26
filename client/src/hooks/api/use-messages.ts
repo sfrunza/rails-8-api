@@ -1,6 +1,6 @@
 import { createMessage, getMessages, getTotalUnreadMessagesCount, getUnreadCount, markAllAsViewed } from "@/api/endpoints/messages";
 import { queryKeys } from "@/lib/query-keys";
-import type { Message } from "@/types";
+import type { Message } from '@/types/index';
 import { useMutation, useQuery, type UseMutationOptions, type UseQueryOptions } from "@tanstack/react-query";
 
 export function useMessages(

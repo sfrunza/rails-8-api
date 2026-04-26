@@ -1,6 +1,6 @@
 import { ErrorBoundary } from "@/components/shared/error-boundary";
 import { useRequestsSubscription } from "@/hooks/use-requests-subscription";
-import { router } from "@/routes";
+import { router } from "@/routes/index";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/query-client";
 import { Toaster } from "./components/ui/sonner";

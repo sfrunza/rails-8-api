@@ -22,7 +22,7 @@ import {
 } from "@dnd-kit/sortable";
 import { useId } from "react";
 import { MoveSizeRow } from "./move-size-row";
-import type { MoveSize } from "@/types";
+import type { MoveSize } from "@/types/index";
 
 interface MoveSizesTableProps {
   moveSizes: MoveSize[];
@@ -38,7 +38,7 @@ export function MoveSizesTable({
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    }),
+    })
   );
 
   return (

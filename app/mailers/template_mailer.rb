@@ -13,7 +13,7 @@ class TemplateMailer < ApplicationMailer
 
     if customer
       token = customer.generate_magic_link!(expires_in: 2.days)
-      auto_login_url = "http://localhost:3000/auth/auto-login?token=#{token}&return_to=/account/requests/#{request.id}"
+      auto_login_url = "#{ENV.fetch("FRONTEND_URL")}/auth/auto-login?token=#{token}&return_to=/account/requests/#{request.id}"
     end
 
     @variables = {

@@ -1,4 +1,4 @@
-import type { Truck } from "@/domains/trucks/truck.types";
+import type { Truck } from "@/types/index";
 import { cn } from "@/lib/utils";
 
 interface ParklotTrucksProps {
@@ -22,7 +22,7 @@ export function ParklotTrucks({
     <div
       className={cn(
         "grid-area:trucks] sticky left-0 z-20 grid grid-cols-[100%]",
-        rowHight[size],
+        rowHight[size]
       )}
     >
       {trucks?.map((truck) => {
@@ -38,13 +38,13 @@ export function ParklotTrucks({
                 : undefined
             }
             className={cn(
-              "bg-muted relative flex items-center justify-center border-r border-b text-sm font-semibold",
+              "relative flex items-center justify-center border-r border-b bg-muted text-sm font-semibold",
               {
                 "cursor-pointer": Boolean(onTruckClick),
                 "bg-primary text-primary-foreground": selectedTrucks?.includes(
-                  truck.id,
+                  truck.id
                 ),
-              },
+              }
             )}
           >
             {truck.name} #{truck.id}

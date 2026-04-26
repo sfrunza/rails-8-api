@@ -1,5 +1,5 @@
 import { api } from '@/lib/axios'
-import type { Message } from "@/types";
+import type { Message } from '@/types/index';
 
 function endpoint(requestId: number) {
   return `/requests/${requestId}/messages`;

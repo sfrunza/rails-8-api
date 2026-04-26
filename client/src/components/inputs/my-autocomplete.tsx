@@ -135,7 +135,7 @@ export function MyAutocomplete({
             },
           };
 
-          addresses.push(addressObj);
+          addresses.push(addressObj as Partial<Address>);
         }
 
         setAutocompleteSuggestions(addresses);
@@ -212,7 +212,7 @@ export function MyAutocomplete({
                 className="items-start gap-1 truncate text-xs"
               >
                 {/* Location icon */}
-                <div className="text-muted-foreground mt-0.5">
+                <div className="mt-0.5 text-muted-foreground">
                   <svg
                     width="14"
                     height="14"
@@ -226,7 +226,7 @@ export function MyAutocomplete({
                 {/* Address text */}
                 <div className="min-w-0">
                   <div className="truncate text-sm font-medium">{street}</div>
-                  <div className="text-muted-foreground truncate text-xs">
+                  <div className="truncate text-xs text-muted-foreground">
                     {city}, {state} {zip}
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth-store';
 import { extractError } from '@/lib/axios';
 import { queryClient } from '@/lib/query-client';
 import { getPortalForRole } from '@/lib/role-guards';
-import type { LoginResponse } from '@/types';
+import type { LoginResponse } from '@/types/index';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate, useSearchParams } from 'react-router';
 import { toast } from 'sonner';

@@ -29,7 +29,7 @@ import { useRef } from "react";
 import { useParams } from "react-router";
 import { useReactToPrint } from "react-to-print";
 import { InvoicePaymentDialog } from "./invoice-payment-dialog";
-import type { InvoiceStatus } from "@/types";
+import type { InvoiceStatus } from "@/types/index";
 import {
   INVOICE_STATUS_BG_COLOR,
   INVOICE_STATUS_TEXT_COLOR,

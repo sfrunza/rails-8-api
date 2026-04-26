@@ -1,7 +1,7 @@
-import type { InventoryItemBrowserTypeFilter } from "@/components/inventory/inventory-item-browser";
+// import type { InventoryItemBrowserTypeFilter } from "@/components/inventory/inventory-item-browser";
 import type { Item } from "@/domains/items/item.types";
 
-export type ItemTypeFilter = InventoryItemBrowserTypeFilter;
+// export type ItemTypeFilter = InventoryItemBrowserTypeFilter;
 
 export interface ItemForm {
   name: string;

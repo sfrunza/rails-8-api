@@ -1,4 +1,4 @@
-import type { Message } from "@/domains/messages/message.types";
+import type { Message } from "@/types/index";
 
 export function groupMessagesByDate(messages: Message[]): [string, Message[]][] {
   const groups = new Map<string, Message[]>();

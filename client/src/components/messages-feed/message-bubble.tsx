@@ -1,5 +1,5 @@
 import { ChatInfoAvatar } from "@/components/chat-info/chat-info";
-import type { Message } from "@/domains/messages/message.types";
+import type { Message } from "@/types/index";
 import type { Status } from "@/domains/requests/request.types";
 import { cn } from "@/lib/utils";
 import { CheckCheckIcon, CheckIcon } from "@/components/icons";
@@ -27,7 +27,7 @@ export function MessageBubble({
 
   const isFromCurrentUser = message.user_id === currentUserId;
   const isSeenByOther = isFromCurrentUser
-    ? message.viewed_by.some((id) => id !== currentUserId)
+    ? message.viewed_by.some((id: number) => id !== currentUserId)
     : false;
 
   return (

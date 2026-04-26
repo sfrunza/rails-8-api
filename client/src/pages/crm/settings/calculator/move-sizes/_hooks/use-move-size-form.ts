@@ -7,7 +7,7 @@ import { useEntranceTypes } from "@/hooks/api/use-entrance-types";
 import { useCreateMoveSize, useMoveSizes, useUpdateMoveSize } from "@/hooks/api/use-move-sizes";
 import { queryClient } from "@/lib/query-client";
 import { queryKeys } from "@/lib/query-keys";
-import type { MoveSize } from "@/types";
+import type { MoveSize } from '@/types/index';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
