@@ -30,75 +30,38 @@ export const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-// api.interceptors.response.use(
-//   (res) => res,
-//   (error: AxiosError) => {
-//     if (!error.response) {
-//       toast.error('Network error')
-//       return Promise.reject(error)
-//     }
-//     return Promise.reject(error)
-//   }
-// )
-
-// api.interceptors.response.use(
-//   (res) => res,
-//   (error: unknown) => {
-//     if (axios.isAxiosError(error) && error.response?.status === 401) {
-//       // localStorage.removeItem('auth-store');
-//       // window.location.href = '/auth/login';
-//     }
-//     return Promise.reject(error);
-//   },
-// );
-
-// Response interceptor to handle errors
-// api.interceptors.response.use(
-//   (response) => response, // Pass through successful responses
-//   (error) => {
-//     const config = error.config;
-
-//     if (axios.isAxiosError(error) && error.response) {
-//       const status = error.response.status;
-//       const data = error.response.data;
-
-//       // ✅ Skip toast if the request was marked as silent
-//       if (config?.silent) {
-//         return Promise.reject(error);
-//       }
-
-//       if (status === 422 && data) {
-//         // Handle validation errors
-//         const validationErrors = data as ValidationError;
-//         const errorMessage = Object.entries(validationErrors)
-//           .map(([field, messages]) => `${field}: ${messages.join(', ')}`)
-//           .join('; ');
-
-//         toast.error(errorMessage)
-//         return Promise.reject(new Error(errorMessage));
-//       } else if (data.error) {
-//         // Handle generic API errors
-//         const apiError = data as ApiError;
-//         toast.error(apiError.error)
-//         return Promise.reject(new Error(apiError.error));
-//       }
-//     }
-//     toast.error('Network or unexpected error')
-//     return Promise.reject(new Error('Network or unexpected error'));
-//   }
-// );
-
-// export default api
-
-
+// Rails/JSON:API style: { name: ['has already been taken'], email: ['is invalid'] }
+function formatFieldErrors(data: Record<string, unknown>): string | null {
+  const parts: string[] = []
+  for (const [field, value] of Object.entries(data)) {
+    if (field === 'error' || field === 'errors' || field === 'base') continue
+    if (!Array.isArray(value) || value.length === 0) continue
+    if (!value.every((v) => typeof v === 'string')) continue
+    parts.push(`${field}: ${(value as string[]).join(', ')}`)
+  }
+  return parts.length > 0 ? parts.join('; ') : null
+}
 
 export function extractError(error: unknown): string {
   if (axios.isAxiosError(error)) {
-    const data = error.response?.data as ApiError | undefined;
-    if (data?.error) return data.error;
-    if (data?.errors?.length) return data.errors.join(', ');
-    if (data?.base?.length) return data.base.join(', ');
-    return error.message;
+    const data = error.response?.data as ApiError | Record<string, unknown> | undefined
+
+    if (data && typeof data === 'object' && !Array.isArray(data)) {
+      const record = data as Record<string, unknown>
+      if (typeof record.error === 'string' && record.error) return record.error
+      if (Array.isArray(record.errors) && record.errors.length) {
+        const errs = record.errors
+        if (errs.every((e) => typeof e === 'string')) return errs.join(', ')
+      }
+      if (Array.isArray(record.base) && record.base.length) {
+        const base = record.base
+        if (base.every((b) => typeof b === 'string')) return base.join(', ')
+      }
+      const fromFields = formatFieldErrors(record)
+      if (fromFields) return fromFields
+    }
+
+    return error.message
   }
-  return 'An unexpected error occurred';
+  return 'An unexpected error occurred'
 }
